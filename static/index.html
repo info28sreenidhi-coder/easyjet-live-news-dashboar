@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>easyJet Live News</title>
+<style>
+:root{--bg:#06131b;--bg2:#0a202b;--card:#102c38;--line:rgba(255,255,255,.10);--text:#f7fafc;--muted:#9db2bc;--orange:#ff7900;--orange2:#ff9b3d;--yellow:#ffd400;--green:#32d583;--red:#ff5d66;--shadow:0 28px 70px rgba(0,0,0,.34)}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:radial-gradient(900px 500px at 70% -10%,#164556 0%,transparent 65%),linear-gradient(145deg,var(--bg),#02080d 72%);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 0 42%,rgba(255,121,0,.035) 50%,transparent 58%);animation:ambient 12s ease-in-out infinite alternate}@keyframes ambient{from{transform:translateX(-2%)}to{transform:translateX(2%)}}
+.topbar{height:82px;display:flex;align-items:center;justify-content:space-between;padding:0 34px;border-bottom:1px solid var(--line);background:rgba(3,12,17,.72);backdrop-filter:blur(14px);position:relative;z-index:5}.brand{display:flex;align-items:center;gap:16px;font-weight:900;letter-spacing:2px;font-size:clamp(25px,3vw,42px)}.live-pill{display:flex;align-items:center;gap:8px;font-size:14px;letter-spacing:1px;color:#d8e4e9;font-weight:800}.dot{width:10px;height:10px;border-radius:50%;background:var(--green);box-shadow:0 0 18px rgba(50,213,131,.8);animation:pulse 1.7s infinite}@keyframes pulse{50%{transform:scale(.72);opacity:.55}}.dot.bad{background:var(--red);box-shadow:0 0 16px rgba(255,93,102,.6)}.clock{font-variant-numeric:tabular-nums;color:var(--muted);font-size:13px;margin-top:4px}
+.ticker{height:40px;display:flex;align-items:center;overflow:hidden;border-bottom:1px solid var(--line);background:#081922}.ticker-label{height:100%;display:flex;align-items:center;padding:0 18px;background:var(--orange);color:#101820;font-weight:950;letter-spacing:1.2px;z-index:2;box-shadow:10px 0 25px rgba(255,121,0,.18)}.ticker-window{overflow:hidden;flex:1;white-space:nowrap}.ticker-track{display:inline-block;padding-left:100%;animation:ticker 35s linear infinite;color:#dbe6ea;font-size:14px}@keyframes ticker{to{transform:translateX(-100%)}}
+main{height:calc(100vh - 122px);padding:18px 24px 22px}.shell{height:100%;max-width:1700px;margin:auto;border:1px solid var(--line);border-radius:26px;overflow:hidden;background:linear-gradient(145deg,rgba(14,42,53,.96),rgba(4,17,24,.97));box-shadow:var(--shadow);position:relative}.shell-head{height:68px;padding:0 28px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.title{font-size:clamp(20px,2vw,30px);font-weight:900}.title span{color:var(--orange2)}.count{color:var(--muted);font-size:14px;font-weight:700}
+#stage{position:relative;height:calc(100% - 68px);overflow:hidden}.slide{position:absolute;inset:0;display:grid;grid-template-columns:minmax(330px,42%) 1fr;gap:38px;padding:30px 38px 42px;opacity:0;transform:translateX(55px) scale(.985);filter:blur(3px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.75,.25,1),filter .7s ease;pointer-events:none}.slide.active{opacity:1;transform:translateX(0) scale(1);filter:blur(0);pointer-events:auto}.visual{min-width:0;display:flex;flex-direction:column}.image-frame{position:relative;height:min(50vh,430px);min-height:270px;border-radius:22px;overflow:hidden;border:1px solid rgba(255,255,255,.12);background:linear-gradient(145deg,#153746,#07131a);box-shadow:0 22px 45px rgba(0,0,0,.30)}.hero-image{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.015);animation:kenburns 60s linear forwards}@keyframes kenburns{to{transform:scale(1.08)}}.image-frame:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 48%,rgba(0,0,0,.64));pointer-events:none}.image-badge{position:absolute;left:16px;top:16px;z-index:2;padding:7px 11px;border-radius:999px;background:rgba(4,15,20,.76);border:1px solid rgba(255,255,255,.16);font-size:12px;font-weight:900;letter-spacing:1.1px;text-transform:uppercase}.placeholder{height:100%;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:clamp(48px,6vw,88px);color:var(--orange);background:radial-gradient(circle at 50% 40%,#1c4657,#08151c 65%)}.meta{display:flex;justify-content:space-between;gap:15px;margin-top:13px;color:var(--muted);font-size:14px}.category{color:var(--orange2);font-weight:900;letter-spacing:1.5px;text-transform:uppercase}.content{min-width:0;display:flex;flex-direction:column;justify-content:center;padding-right:15px}.eyebrow{font-size:13px;letter-spacing:2px;color:var(--orange2);font-weight:950;text-transform:uppercase;margin-bottom:12px}.headline{font-size:clamp(32px,4vw,58px);line-height:1.08;margin:0 0 18px;font-weight:950;letter-spacing:-1.2px;max-width:1000px}.headline a{color:inherit;text-decoration:none}.headline a:hover{color:#fff0e5}.new{display:inline-flex;align-items:center;gap:6px;color:var(--yellow);font-size:.38em;letter-spacing:1px;vertical-align:middle;margin-left:8px;white-space:nowrap}.new:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--yellow);box-shadow:0 0 12px rgba(255,212,0,.8)}.summary-box{max-width:920px;padding:18px 20px;border-left:3px solid var(--orange);background:linear-gradient(90deg,rgba(255,121,0,.09),rgba(255,255,255,.025));border-radius:0 14px 14px 0}.summary-label{font-size:12px;letter-spacing:1.8px;color:var(--orange2);font-weight:950;text-transform:uppercase;margin-bottom:9px}.summary{font-size:clamp(18px,1.55vw,25px);line-height:1.48;color:#e3edf1;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5;overflow:hidden}.date-line{margin-top:16px;color:var(--muted);font-size:14px}.read-more{margin-top:9px;color:#b8cbd3;font-size:13px}.read-more strong{color:#fff}.footer-row{position:absolute;left:38px;right:38px;bottom:17px;display:flex;align-items:center;gap:14px}.progress{height:4px;flex:1;border-radius:99px;background:rgba(255,255,255,.10);overflow:hidden}.progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--orange),var(--orange2));box-shadow:0 0 14px rgba(255,121,0,.6)}.progress-bar.running{animation:fill 60s linear forwards}@keyframes fill{from{width:0}to{width:100%}}.counter{color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums;white-space:nowrap}.nav-hint{position:absolute;right:38px;top:26px;color:rgba(255,255,255,.35);font-size:12px}.empty{height:100%;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:20px}.source-note{position:absolute;bottom:8px;left:38px;color:rgba(220,235,240,.45);font-size:11px}
+
+.special-slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:34px 46px;opacity:0;transform:translateX(55px) scale(.985);filter:blur(3px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.75,.25,1),filter .7s ease;pointer-events:none}.special-slide.active{opacity:1;transform:translateX(0) scale(1);filter:blur(0);pointer-events:auto}
+.health-card{width:100%;height:100%;display:grid;grid-template-columns:minmax(330px,43%) 1fr;gap:38px;align-items:center}.health-image{height:min(56vh,470px);min-height:290px;border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.12);background:#08151c;box-shadow:0 22px 45px rgba(0,0,0,.30)}.health-image img{width:100%;height:100%;object-fit:cover;display:block;animation:kenburns 30s linear forwards}.health-content{min-width:0}.source-chip{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(255,121,0,.10);border:1px solid rgba(255,121,0,.28);color:var(--orange2);font-weight:900;letter-spacing:1.2px;text-transform:uppercase;font-size:12px}.health-title{font-size:clamp(30px,3.5vw,54px);line-height:1.08;margin:18px 0 20px;font-weight:950;letter-spacing:-1px}.health-summary{font-size:clamp(18px,1.5vw,24px);line-height:1.5;color:#e3edf1;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5;overflow:hidden;padding-left:18px;border-left:3px solid var(--orange)}
+.security-card{width:100%;height:100%;border:1px solid rgba(255,255,255,.12);border-radius:24px;background:linear-gradient(145deg,rgba(14,42,53,.98),rgba(4,17,24,.98));padding:30px 38px;box-shadow:0 22px 45px rgba(0,0,0,.30);position:relative;overflow:hidden}.security-card:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 15%,rgba(255,121,0,.13),transparent 35%);pointer-events:none}.security-head{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line);padding-bottom:18px}.security-head h2{margin:0;font-size:clamp(26px,3vw,44px);font-weight:950}.security-head span{color:var(--orange2);font-weight:900;letter-spacing:1.5px;font-size:12px;text-transform:uppercase}.security-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 26px;margin-top:24px}.security-point{display:flex;align-items:center;gap:14px;min-height:58px;padding:8px 10px;border-radius:14px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.055);transition:transform .25s ease,background .25s ease}.security-point:hover{transform:translateX(6px);background:rgba(255,121,0,.07)}.security-icon{width:38px;height:38px;flex:0 0 38px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,121,0,.10);border:1px solid rgba(255,121,0,.25);color:var(--orange2);font-size:18px}.security-point b{font-size:clamp(14px,1.25vw,19px);line-height:1.25}.security-foot{position:absolute;left:38px;right:38px;bottom:17px;display:flex;align-items:center;gap:14px}.security-foot .progress{flex:1}
+@media(max-width:1000px){body{overflow:auto}.topbar{padding:0 16px}.ticker{display:none}main{height:auto;min-height:calc(100vh - 82px);padding:10px}.shell{height:auto;min-height:850px}.shell-head{height:62px;padding:0 18px}.slide{grid-template-columns:1fr;padding:20px 20px 48px;gap:20px}.image-frame{height:300px}.content{padding:0}.headline{font-size:34px}.footer-row{left:20px;right:20px}.nav-hint{display:none}.health-card{grid-template-columns:1fr}.health-image{height:280px}.security-grid{grid-template-columns:1fr}.special-slide{padding:20px}.security-card{padding:22px}.security-foot{left:22px;right:22px}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="brand"><span>LIVE easyJet NEWS</span></div><div style="text-align:right"><div class="live-pill"><span id="dot" class="dot"></span><span id="statusLine">CONNECTING</span></div><div id="clock" class="clock"></div></div></header>
+<div class="ticker"><div class="ticker-label">LATEST</div><div class="ticker-window"><div id="tickerTrack" class="ticker-track">Loading latest easyJet updates…</div></div></div>
+<main><section class="shell"><div class="shell-head"><div class="title">LIVE NEWS <span>• easyJet · Health · Security</span></div><div class="count" id="count">0 stories</div></div><div id="stage"><div class="empty">Waiting for the first successful update…</div></div><div class="source-note">Official easyJet Media Centre + Times of India Health • source check every 15 min • 30 sec per slide</div></section></main>
+<script>
+const DASHBOARD_REFRESH=60*1000,DEFAULT_SLIDE_SECONDS=30;let articles=[],currentIndex=0,slideTimer=null,slideSeconds=DEFAULT_SLIDE_SECONDS,lastSignature="";
+const $=id=>document.getElementById(id);
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
+function date(v){if(!v)return'Date unavailable';const d=new Date(v);return Number.isNaN(d.getTime())?v:d.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'})}
+function renderTicker(list){const text=list.slice(0,8).map((x,i)=>`${i+1}. ${x.title}`).join('   •   ');$('tickerTrack').textContent=text||'No recent stories available';}
+function render(data){
+  const incoming=data.articles||[];
+  slideSeconds=Number(data.slide_seconds||30);
+  $('count').textContent=`${incoming.length} slides`;
+  const state=data.state||{},ok=state.last_ok===true;
+  $('statusLine').textContent=ok?'LIVE • SOURCES CONNECTED':'RETRYING • SOURCE CHECK';
+  $('dot').className='dot'+(ok?'':' bad');
+  renderTicker(incoming.filter(x=>x.slide_type==='easyjet'));
+  if(!incoming.length){articles=[];lastSignature='';$('stage').innerHTML='<div class="empty">Waiting for the first successful update…</div>';stop();return}
+  const signature=incoming.map(x=>[x.id,x.url,x.title,x.image,x.summary,x.slide_type].join('|')).join('||');
+  if(signature===lastSignature)return;
+  lastSignature=signature;
+  const prevUrl=articles[currentIndex]?.url;
+  const prevId=articles[currentIndex]?.id;
+  articles=incoming;
+  let found=prevId?articles.findIndex(x=>x.id===prevId):-1;
+  if(found<0 && prevUrl)found=articles.findIndex(x=>x.url===prevUrl);
+  currentIndex=found>=0?found:Math.min(currentIndex,articles.length-1);
+  draw();
+  start();
+}
+function slideImage(x){
+  if(!x.image)return '<div class="placeholder">easyJet</div>';
+  return `<img class="hero-image" src="${esc(x.image)}" alt="" onerror="this.outerHTML='<div class=placeholder>easyJet</div>'">`;
+}
+function draw(){
+  const stage=$('stage');
+  stage.innerHTML=articles.map((x,i)=>{
+    const active=i===currentIndex?'active':'';
+    if(x.slide_type==='security'){
+      const points=[
+        ['🔐','Don’t share login details with others'],
+        ['📄','Don’t leave sensitive data lying around the office'],
+        ['🔑','Use strong and varied passwords'],
+        ['🛡️','Use two-factor or multi-factor authentication'],
+        ['🗝️','Use a password management tool'],
+        ['✉️','Don’t open emails or files from untrusted sources'],
+        ['📶','Avoid using public Wi-Fi without a VPN'],
+        ['🌐','Avoid unfamiliar websites and unnecessary downloads'],
+        ['👥','Educate employees on security awareness']
+      ];
+      return `<article class="special-slide ${active}" data-index="${i}"><div class="security-card"><div class="security-head"><h2>Cybersecurity Awareness</h2><span>SECURITY • STAY ALERT</span></div><div class="security-grid">${points.map(p=>`<div class="security-point"><span class="security-icon">${p[0]}</span><b>${esc(p[1])}</b></div>`).join('')}</div><div class="security-foot"><div class="progress"><div class="progress-bar" id="progress-${i}"></div></div><div class="counter">${i+1} / ${articles.length}</div></div></div></article>`;
+    }
+    if(x.slide_type==='health'){
+      const image=x.image?`<img src="${esc(x.image)}" alt="" onerror="this.parentElement.innerHTML='<div class=placeholder>HEALTH</div>'">`:'<div class="placeholder">HEALTH</div>';
+      return `<article class="special-slide ${active}" data-index="${i}"><div class="health-card"><div class="health-image">${image}</div><div class="health-content"><span class="source-chip">● Times of India Health</span><h1 class="health-title"><a href="${esc(x.url)}" target="_blank" rel="noopener noreferrer">${esc(x.title)}</a></h1><div class="health-summary">${esc(x.summary||'Read the latest health report from the Times of India Health section.')}</div><div class="date-line">Current health news • ${esc(date(x.published))} • Open for full article ↗</div></div><div class="footer-row"><div class="progress"><div class="progress-bar" id="progress-${i}"></div></div><div class="counter">${i+1} / ${articles.length}</div></div></div></article>`;
+    }
+    const image=slideImage(x);const badge=x.is_new?'<span class="new">NEW</span>':'';const summary=x.summary||'This update has been published by the official easyJet Media Centre. Open the official article for the complete announcement and details.';
+    return `<article class="slide ${active}" data-index="${i}"><div class="visual"><div class="image-frame"><div class="image-badge">${esc(x.category||'News')}</div>${image}</div><div class="meta"><span class="category">${esc(x.category||'News')}</span><span>${esc(date(x.published))}</span></div></div><div class="content"><div class="eyebrow">easyJet Media Centre • Latest update</div><h1 class="headline"><a href="${esc(x.url)}" target="_blank" rel="noopener noreferrer">${esc(x.title)}</a> ${badge}</h1><div class="summary-box"><div class="summary-label">What this news is about</div><div class="summary">${esc(summary)}</div></div><div class="date-line">Published ${esc(date(x.published))} • Automatically collected from the official source</div><div class="read-more">Open the headline for the <strong>full official article ↗</strong></div></div><div class="footer-row"><div class="progress"><div class="progress-bar" id="progress-${i}"></div></div><div class="counter">${i+1} / ${articles.length}</div></div></article>`;
+  }).join('');
+}
+function stop(){if(slideTimer){clearTimeout(slideTimer);slideTimer=null}}
+function start(){stop();const bar=$(`progress-${currentIndex}`);if(bar){bar.classList.remove('running');void bar.offsetWidth;bar.style.animationDuration=`${slideSeconds}s`;bar.classList.add('running')}slideTimer=setTimeout(next,slideSeconds*1000)}
+function next(){if(!articles.length)return;document.querySelector(`.slide[data-index="${currentIndex}"], .special-slide[data-index="${currentIndex}"]`)?.classList.remove('active');currentIndex=(currentIndex+1)%articles.length;document.querySelector(`.slide[data-index="${currentIndex}"], .special-slide[data-index="${currentIndex}"]`)?.classList.add('active');start()}
+async function load(){try{const r=await fetch(`/api/news?t=${Date.now()}`,{cache:'no-store'});if(!r.ok)throw new Error(`HTTP ${r.status}`);render(await r.json())}catch(e){$('statusLine').textContent='RETRYING • DASHBOARD CONNECTION';$('dot').className='dot bad'}}
+function clock(){$('clock').textContent=new Date().toLocaleString('en-GB',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit'})}
+load();clock();setInterval(load,DASHBOARD_REFRESH);setInterval(clock,1000);
+</script>
+</body></html>
